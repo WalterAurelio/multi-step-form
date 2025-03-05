@@ -1,7 +1,7 @@
 function FinalCheck() {
   return (
     <div className="text-grey-custom">
-      <div className="bg-lighter-blue-custom p-4 rounded-md">
+      <div className="bg-lighter-blue-custom p-4 px-6 rounded-md">
         <div className="flex items-center justify-between border-b-1 pb-4">
           <div>
             <h4 className="text-blue-custom font-bold">Arcade {'(Monthly)'}</h4>
@@ -20,7 +20,7 @@ function FinalCheck() {
         </div>
       </div>
 
-      <div className="flex justify-between px-4 mt-4">
+      <div className="flex justify-between px-6 mt-4">
         <p>Total {'(per month)'}</p>
         <p className="text-blue-2-custom font-bold text-lg">+$12/mo</p>
       </div>

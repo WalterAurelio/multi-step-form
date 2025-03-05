@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import PersonalInfo from "./pages/PersonalInfoForm";
 import SelectPlanForm from "./pages/SelectPlanForm";
 import AddOnsForm from "./pages/AddOnsForm";
-import FinishUpForm from "./pages/FinishUpForm";
+import SummaryForm from "./pages/SummaryForm";
 import BannerLayout from "./layout/BannerLayout";
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
         <Route index element={<PersonalInfo />} />
         <Route path="/select-plan" element={<SelectPlanForm />} />
         <Route path="/add-ons" element={<AddOnsForm />} />
-        <Route path="/summary" element={<FinishUpForm />} />
+        <Route path="/summary" element={<SummaryForm />} />
       </Route>
     </Routes>
   )

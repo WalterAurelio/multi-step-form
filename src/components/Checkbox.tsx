@@ -2,17 +2,19 @@ import { useRef, useState } from "react"
 import { Check } from 'lucide-react';
 import { useIsPlanMonthlyStore } from "../store/isPlanMonthlyStore";
 
-interface CheckboxProps {
+export interface CheckboxProps {
+  className?: string;
   label: string;
   description: string;
   price: number;
 }
 
-function Checkbox({ label, description, price }: CheckboxProps) {
+function Checkbox({ className, label, description, price }: CheckboxProps) {
   const labelRef = useRef<HTMLLabelElement>(null);
   const [isChecked, setIsChecked] = useState(false);
   const { isPlanMonthly } = useIsPlanMonthlyStore();
   const borderStyles = isChecked ? 'border-blue-2-custom bg-lighter-blue-custom' : 'border-grey-custom';
+  const checkbox_id = `${label.split(' ')[0]}-check`;
 
   const handleClick = () => {
     if (labelRef.current) {
@@ -21,13 +23,13 @@ function Checkbox({ label, description, price }: CheckboxProps) {
   };
 
   return (
-    <div className={`flex items-center border-1 p-4 rounded-md ${borderStyles} hover:border-blue-2-custom hover:bg-lighter-blue-custom`}>
+    <div className={`flex items-center border-1 p-4 rounded-md ${borderStyles} hover:border-blue-2-custom hover:bg-lighter-blue-custom ${className}`}>
 
-      <input id="check" onChange={() => setIsChecked(!isChecked)} type='checkbox' className='peer hidden' checked={isChecked} />
+      <input id={checkbox_id} onChange={() => setIsChecked(!isChecked)} type='checkbox' className='peer hidden' checked={isChecked} />
       <div onClick={handleClick} className="border-1 border-grey-custom w-5 h-5 rounded-sm cursor-pointer peer-checked:bg-blue-2-custom peer-checked:border-blue-2-custom flex items-center justify-center select-none mr-4">
         { isChecked && <Check className='text-white w-3.5' /> }
       </div>
-      <label ref={labelRef} htmlFor="check" className='text-lg text-blue-custom font-medium cursor-pointer select-none leading-6'>
+      <label ref={labelRef} htmlFor={checkbox_id} className='text-lg text-blue-custom font-medium cursor-pointer select-none leading-6'>
         {label}
         <br />
         <span className='text-grey-custom text-base font-normal'>{description}</span>

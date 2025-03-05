@@ -31,6 +31,10 @@ function SelectPlanForm() {
   const subtitle = 'You have the option of monthly or yearly biling.';
   const navigate = useNavigate();
 
+  const goBack = () => {
+    navigate(-1);
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     navigate('/add-ons');
@@ -49,7 +53,10 @@ function SelectPlanForm() {
         </div>
         <Toggle />
       </div>
-      <div className="p-4 flex justify-end bg-white absolute bottom-0 right-0 left-0 md:static md:px-10">
+      <div className="p-4 flex justify-between bg-white absolute bottom-0 right-0 left-0 md:static md:px-10">
+        <Button onClick={goBack} type="button" variant="back">
+          Go Back
+        </Button>
         <Button type="submit">
           Next Step
         </Button>
