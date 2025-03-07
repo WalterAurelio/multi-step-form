@@ -1,21 +1,19 @@
 import { create } from 'zustand';
+import { TDataSchema } from '../schemas/dataSchema';
+import { createJSONStorage, persist } from 'zustand/middleware';
 
-type Plan = {
-  name: string;
-  price: number;
+type completePlanSchema = Partial<TDataSchema> & {
+  setData: (data: Partial<TDataSchema>) => void
 };
 
-type AddOn = Plan;
-
-interface ICompletePlan {
-  selectedPlan: Plan;
-  selectedAddOns: AddOn[] | undefined;
-}
-
-export const useCompletePlanStore = create<ICompletePlan>(() => ({
-  selectedPlan: {
-    name: 'Arcade',
-    price: 9
-  },
-  selectedAddOns: undefined
-}));
+export const useCompletePlanStore = create<completePlanSchema>()(
+  persist((set) => ({
+    setData: (data) => set(data)
+  }), {
+    name: 'complete-plan-storage',
+    storage: createJSONStorage(() => localStorage)
+  })
+);
+/* export const useCompletePlanStore = create<completePlanSchema>((set) => ({
+  setData: (data) => set(data)
+})); */

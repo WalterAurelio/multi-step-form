@@ -1,13 +1,13 @@
 import { create } from "zustand";
 
 interface ISelectedPlanIndex {
-  selectedIndex: number;
-  setSelectedIndex: (value: number) => void;
+  selectedPlanIndex: number;
+  setSelectedPlanIndex: (value: number) => void;
 }
 
 export const useSelectedPlanIndex = create<ISelectedPlanIndex>((set) => ({
-  selectedIndex: 0,
-  setSelectedIndex: (value) => {
-    set({ selectedIndex: value });
+  selectedPlanIndex: 0,
+  setSelectedPlanIndex: (value) => {
+    set({ selectedPlanIndex: value });
   }
 }));

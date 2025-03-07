@@ -3,16 +3,10 @@ import { z } from "zod";
 export const dataSchema = z.object({
   name: z.string().min(3),
   email: z.string().email(),
-  phoneNumber: z.number().min(6),
-  plan: z.object({
-    name: z.string(),
-    price: z.number()
-  }),
+  phoneNumber: z.string().min(3),
+  plan: z.string(),
   isMonthly: z.boolean(),
-  addOns: z.union([z.undefined(), z.array(z.object({
-    name: z.string(),
-    price: z.number()
-  }))])
+  addOns: z.array(z.string())
 });
 
 export type TDataSchema = z.infer<typeof dataSchema>;

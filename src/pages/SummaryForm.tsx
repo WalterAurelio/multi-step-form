@@ -2,11 +2,13 @@ import Button from "../components/Button";
 import FinalCheck from "../components/FinalCheck";
 import TitleSubtitle from "../components/TitleSubtitle";
 import { useNavigate } from "react-router-dom";
+import { useCompletePlanStore } from "../store/completePlanStore";
 
 function SummaryForm() {
   const title = 'Finishing up';
   const subtitle = 'Double-check everything looks OK before confirming.';
   const navigate = useNavigate();
+  const { name, email, phoneNumber, plan, isMonthly, addOns } = useCompletePlanStore();
 
   const goBack = () => {
     navigate(-1);
@@ -14,6 +16,14 @@ function SummaryForm() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log({
+      name,
+      email,
+      phoneNumber,
+      plan,
+      isMonthly,
+      addOns
+    });
     console.log('Finalizado');
   };
 
